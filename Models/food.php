@@ -1,12 +1,15 @@
 <?php
-class Food
+
+require_once __DIR__ . '/Product.php';
+class Food extends Products
 {
-    public $name;
-    public $animal;
-    public $price;
-    public $weight;
-    public $ingredients;
-    public function __construct()
+    private $ingridients;
+    public function get_ingridients()
     {
+        return $this->ingridients;
+    }
+    public function set_ingridients($_ingridients)
+    {
+        $this->ingridients = $_ingridients;
     }
 }

@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . "/Models/Product.php";
 require_once __DIR__ . "/Models/Category.php";
+require_once __DIR__ . "/Models/Food.php";
 
 $category_dog = new Category('Dog', '<i class="fa-solid fa-dog"></i>');
 $category_cat = new Category('Cat', '<i class="fa-solid fa-cat"></i>');
@@ -10,12 +11,15 @@ $category_fish = new Category('Fish', '<i class="fa-solid fa-fish"></i>');
 
 $product1 = new Products(10, 'Guinzaglio', 'Lorem Ipsum Guinzaglio', $category_dog, 15.99, '#');
 $product2 = new Products(20, 'Osso per cani', 'Lorem Ipsum Osso', $category_dog, 27.99, '#');
+$product3 = new Food(30, 'Croccantini', 'Lorem Ipsum Croccantini', $category_dog, 22.99, '#');
+$product3->set_ingridients('Pollo, Cartone, Manzo');
 
 // var_dump($product1);
 
 $products = [
     $product1,
-    $product2
+    $product2,
+    $product3
 ]
 ?>
 
@@ -43,12 +47,15 @@ $products = [
                     <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $product->get_name(); ?></h5>
-                        <p class="card-text"><?php echo $product->get_description(); ?></p>
+                        <p class="card-text"><?php echo $product->get_description()  ?></p>
+                        <?php if (method_exists($product, 'get_ingridients')) : ?>
+                            <p>Ingrideints: <?php echo $product->get_ingridients(); ?></p>
+                        <?php endif; ?>
                         <p class="card-text"><?php echo $product->get_price(); ?>$</p>
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
-            <?php endforeach ?>
+            <?php endforeach; ?>
         </div>
     </div>
 </body>
