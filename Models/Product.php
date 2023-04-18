@@ -1,9 +1,16 @@
 <?php
+require_once __DIR__ . '/../Traits/Name.php';
+require_once __DIR__ . '/../Traits/Id.php';
+
 class Products
 {
+    use Id;
+    use Name {
+        get_name as get_trait_name;
+    }
 
-    private $id;
-    private $name;
+    // private $id;
+
     private $description;
     private $category;
     private $price;
@@ -18,22 +25,8 @@ class Products
         $this->price = $_price;
         $this->image = $_image;
     }
-    public function get_id()
-    {
-        return $this->id;
-    }
-    public function set_id($_id)
-    {
-        $this->id = $_id;
-    }
-    public function get_name()
-    {
-        return $this->name;
-    }
-    public function set_name($_name)
-    {
-        $this->name = $_name;
-    }
+
+
     public function get_description()
     {
         return $this->description;
@@ -66,5 +59,9 @@ class Products
     public function set_image($_image)
     {
         $this->image = $_image;
+    }
+    public function get_name()
+    {
+        return "Product: {$this->get_trait_name()}";
     }
 }

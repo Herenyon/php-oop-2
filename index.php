@@ -11,7 +11,7 @@ $category_fish = new Category('Fish', '<i class="fa-solid fa-fish"></i>');
 
 $product1 = new Products(10, 'Guinzaglio', 'Lorem Ipsum Guinzaglio', $category_dog, 15.99, '#');
 $product2 = new Products(20, 'Osso per cani', 'Lorem Ipsum Osso', $category_dog, 27.99, '#');
-$product3 = new Food(30, 'Croccantini', 'Lorem Ipsum Croccantini', $category_dog, 22.99, '#');
+$product3 = new Food(30, 'Croccantini', 'Lorem Ipsum Croccantini', $category_cat, 22.99, '#');
 $product3->set_ingridients('Pollo, Cartone, Manzo');
 
 // var_dump($product1);
@@ -46,7 +46,8 @@ $products = [
                 <div class="card" style="width: 18rem;">
                     <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title"><?php echo $product->get_name(); ?></h5>
+                        <h3 class="card-title"><?php echo $product->get_name(); ?></h3>
+                        <h4><?php echo $product->get_category()->get_category_info(); ?></h4>
                         <p class="card-text"><?php echo $product->get_description()  ?></p>
                         <?php if (method_exists($product, 'get_ingridients')) : ?>
                             <p>Ingrideints: <?php echo $product->get_ingridients(); ?></p>
